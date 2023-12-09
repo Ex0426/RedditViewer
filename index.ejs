@@ -4,7 +4,7 @@
         body {
             text-align: center;
         }
-        img {
+        img, video {
             max-width: 90vw;
             max-height: 90vh;
 
@@ -17,7 +17,11 @@
     <h1>Images</h1>
     <div><!-- Sketchy whitespace removal
     --><% images.forEach(image => { %><!--
-        --><a href="<%= image.url %>"><img src="<%= image.url %>" alt="<%= image.title %>" /></a><!--
+        --><% if (image.type === 1) { %><!--
+            --><a href="<%= image.reddit_url %>"><img src="<%= image.url %>" alt="<%= image.title %>" /></a><!--
+        --><% } else { %><!--
+            --><a href="<%= image.reddit_url %>"><video src="<%= image.url %>"></video></a><!--
+        --><% } %><!--
     --><% }); %>
     </div>
 </body>
