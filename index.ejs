@@ -1,0 +1,23 @@
+<head>
+    <title>Dynamic Image Addition</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        img {
+            max-width: 90vw;
+            max-height: 90vh;
+
+            margin: 2px;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Images</h1>
+    <div><!-- Sketchy whitespace removal
+    --><% images.forEach(image => { %><!--
+        --><a href="<%= image.url %>"><img src="<%= image.url %>" alt="<%= image.title %>" /></a><!--
+    --><% }); %>
+    </div>
+</body>
