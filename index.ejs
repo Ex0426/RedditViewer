@@ -1,5 +1,5 @@
 <head>
-    <title>Dynamic Image Addition</title>
+    <title>hello gamers</title>
     <style>
         body {
             text-align: center;
@@ -11,14 +11,20 @@
             margin: 2px;
             padding: 2px;
         }
+        iframe {
+            margin: 2px;
+            padding: 2px;
+        }
     </style>
 </head>
 <body>
-    <h1>Images</h1>
+    <h1>e🅱ic reddit viewer 😳</h1>
     <div><!-- Sketchy whitespace removal
     --><% images.forEach(image => { %><!--
         --><% if (image.type === 1) { %><!--
             --><a href="<%= image.reddit_url %>"><img src="<%= image.url %>" alt="<%= image.title %>" /></a><!--
+        --><% } else if (image.redgifs === 1) { %><!--
+            --><iframe data-id="<%= image.reddit_url %>" src="<%= image.url %>" frameborder="0" scrolling="no" width='640' height='432'></iframe><!--
         --><% } else { %><!--
             --><a href="<%= image.reddit_url %>"><video src="<%= image.url %>"></video></a><!--
         --><% } %><!--

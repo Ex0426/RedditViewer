@@ -48,12 +48,22 @@ function readFile() {
                             });
                         }
                     } else {
-                        images.push({
-                            url: data.url.includes("v.redd.it") ? data.media.reddit_video.fallback_url : data.url,
-                            title: data.title,
-                            type: data.url.includes("v.redd.it") ? 0 : 1,
-                            reddit_url: data.url
-                        });
+                        if (data.url.includes("redgifs.com")) {
+                            images.push({
+                                url: data.url.replace("watch", "ifr"),
+                                title: data.title,
+                                type: 0,
+                                reddit_url: data.permalink,
+                                redgifs: 1
+                            });
+                        } else {
+                            images.push({
+                                url: data.url.includes("v.redd.it") ? data.media.reddit_video.fallback_url : data.url,
+                                title: data.title,
+                                type: data.url.includes("v.redd.it") ? 0 : 1,
+                                reddit_url: data.url
+                            });
+                        }
                     }
 
                     count -= 1;
