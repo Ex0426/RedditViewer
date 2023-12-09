@@ -36,8 +36,17 @@ function readFile() {
                     const jsonData = response.data;
                     let data = jsonData[0].data.children[0].data;
                     
-                    if (data.url === "") {
+                    if (data.url === "" || data.removed_by_category !== null) {
                         console.log("Post likely deleted:", line);
+                    } else if (data.url.includes("reddit.com/gallery")) {
+                        for (let j = 0; j < data.gallery_data.items.length; j++) {
+                            images.push({
+                                url: `https://i.redd.it/${data.gallery_data.items[j].media_id}.jpg`,
+                                title: data.title,
+                                type: 1,
+                                reddit_url: data.url
+                            });
+                        }
                     } else {
                         images.push({
                             url: data.url.includes("v.redd.it") ? data.media.reddit_video.fallback_url : data.url,
