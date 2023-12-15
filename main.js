@@ -74,6 +74,13 @@ function readFile() {
                 .catch(error => {
                     console.error(`Error making the request (${line}):`, error.message);
                 });
+        } else if (line.includes("i.redd.it")) {
+            images.push({
+                url: line,
+                title: line,
+                type: 1,
+                reddit_url: line
+            })
         } else {
             if (line.length > 0) console.log("Not a reddit post:", line);
         }
